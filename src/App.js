@@ -8,24 +8,30 @@ import moment from "moment";
 import { Login } from "./components/Login";
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
+localStorage.setItem('user', 'andres');
+localStorage.setItem('pas', 'sotelo');
+
 class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = { isLoggedIn: false };
-
+        //localStorage.setItem("com", "com"); //alamcenamiento local
     }
+    
 
-   
+
+  
+
     render() {
         const LoginView = () => (
-            //<Login />
-           this.state.isLoggedIn === false ? <Login/> : <TodoApp/>
+            <Login />
+            //this.state.isLoggedIn === false ? <Login/> : <TodoApp/>
         );
 
         const TodoAppView = () => (
-            //<TodoApp />
-            this.state.isLoggedIn === true ? <TodoApp/> : <Login/>
+            <TodoApp />
+            //this.state.isLoggedIn === true ? <TodoApp/> : <Login/>
         );
         return (
             <Router>
@@ -39,14 +45,13 @@ class App extends Component {
                     <br />
 
                     <ul>
-                        <li><Link to="/">Login</Link></li>
-                        <li><Link to="/todo">Todo</Link></li>
+                        {localStorage.getItem('isLoggedIn') === 'false' ? <li><Link to="/">Login</Link></li> :
+                            <li><Link to="/todo">Todo</Link></li>}
                     </ul>
 
                     <div>
-                        
-                        <Route exact path="/" component={LoginView} />
-                        <Route path="/todo" component={TodoAppView} />
+                        {localStorage.getItem('isLoggedIn') === 'false' ? <Route exact path="/" component={LoginView} /> :
+                            <Route path="/todo" component={TodoAppView} />}
                     </div>
                 </div>
             </Router>

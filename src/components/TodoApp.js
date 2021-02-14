@@ -8,11 +8,6 @@ import {TodoList} from "./TodoList";
 import {Login} from "./Login";
 
 
-
-//import React, { useState } from 'react';
-//import Button from '@material-ui/core/Button';
-//import Input from '@material-ui/core/Input';
-
 export class TodoApp extends Component {
 
     constructor(props) {
@@ -22,6 +17,8 @@ export class TodoApp extends Component {
         this.handlePriorityChange = this.handlePriorityChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogOut = this.handleLogOut.bind(this);
+    
     }
 
 
@@ -33,10 +30,10 @@ export class TodoApp extends Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">TODO React App</h1>
                 </header>
-
+               
                 <br/>
                 <br/>
-                <form onSubmit={this.handleSubmit} className="todo-form">
+                <form    className="todo-form">
                     <h3>New TODO</h3>
                     <label htmlFor="text" className="right-margin">
                         Text:
@@ -78,6 +75,7 @@ export class TodoApp extends Component {
                 <br/>
                 <br/>
                 <TodoList todoList={this.state.items}/>
+                
             </div>
         );
     }
@@ -98,6 +96,10 @@ export class TodoApp extends Component {
         this.setState({
             dueDate: date
         });
+    }
+    
+    handleLogOut(e) {
+        localStorage.setItem('isLoggedIn', 'false');
     }
 
     handleSubmit(e) {

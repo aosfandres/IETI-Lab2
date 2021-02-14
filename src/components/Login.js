@@ -9,11 +9,23 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import './Login.css'
+import { TodoApp } from './TodoApp';
 
 
-export class Login extends React.Component{
+export class Login extends React.Component {
 
-    render(){
+    constructor(props) {
+        super(props);
+        this.state = { user: '', pas: '' };
+        localStorage.setItem('isLoggedIn', 'false');
+        this.handleUserChange = this.handleUserChange.bind(this);
+        this.handlePasChange = this.handlePasChange.bind(this);
+        this.handleLoginChange = this.handleLoginChange.bind(this);
+    }
+
+    
+   
+    render() {
         return (
             <React.Fragment>
                 <CssBaseline />
@@ -23,10 +35,15 @@ export class Login extends React.Component{
                             <LockIcon />
                         </Avatar>
                         <Typography variant="h2">Sign in</Typography>
-                        <form className="form">
+                        <form className="form" onSubmit={this.handleSubmit}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Email Address</InputLabel>
-                                <Input id="email" name="email" autoComplete="email" autoFocus />
+                                <Input
+                                    id="email"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                    onChange={this.handleUserChange} />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="password">Password</InputLabel>
@@ -35,6 +52,7 @@ export class Login extends React.Component{
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
+                                    onChange={this.handlePasChange}
                                 />
                             </FormControl>
                             <Button
@@ -43,6 +61,8 @@ export class Login extends React.Component{
                                 variant="contained"
                                 color="primary"
                                 className="submit"
+                                onClick={this.handleLoginChange}
+                                {...localStorage.getItem('isLoggedIn')?<TodoApp />:<Login />}
                             >
                                 Sign in
                             </Button>
@@ -52,5 +72,26 @@ export class Login extends React.Component{
             </React.Fragment>
         );
     }
+ 
+    handleUserChange(e) {
+        this.setState({
+            user: e.target.value
+        });
+    }
+
+    handlePasChange(e) {
+        this.setState({
+            pas: e.target.value
+        });
+    }
+    handleLoginChange(e) {
+        if (this.state.user === localStorage.getItem('user') && this.state.pas === localStorage.getItem('pas')) {
+            localStorage.setItem('isLoggedIn', 'true');
+            
+        }
+    }
+
+ 
+
 
 }
