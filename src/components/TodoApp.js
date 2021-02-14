@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {TodoList} from "./TodoList";
+import logo from '../logo.svg';
+import '../App.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from "moment";
 import {TodoList} from "./TodoList";
+import {Login} from "./Login";
 
 
 
@@ -13,7 +13,7 @@ import {TodoList} from "./TodoList";
 //import Button from '@material-ui/core/Button';
 //import Input from '@material-ui/core/Input';
 
-class App extends Component {
+export class TodoApp extends Component {
 
     constructor(props) {
         super(props);
@@ -123,4 +123,4 @@ class App extends Component {
 
 }
 
-export default App;
+
