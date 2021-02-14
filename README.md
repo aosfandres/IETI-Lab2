@@ -1,3 +1,13 @@
+# REACT MATERIAL
+Clonar el repositorio y ejecutar 
+```javascript
+npm install
+npm start
+```
+las credenciales para la pagina de Login son 
+- USER: andres 
+- PASSWORD: sotelo
+
 <p align="center">
   <a href="https://material-ui.com/" rel="noopener" target="_blank"><img width="150" src="https://material-ui.com/static/logo.svg" alt="Material-UI logo"></a></p>
 </p>
