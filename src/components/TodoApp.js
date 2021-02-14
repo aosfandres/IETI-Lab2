@@ -33,7 +33,8 @@ export class TodoApp extends Component {
                
                 <br/>
                 <br/>
-                <form    className="todo-form">
+                
+                <form   onSubmit={this.handleSubmit} className="todo-form">
                     <h3>New TODO</h3>
                     <label htmlFor="text" className="right-margin">
                         Text:
