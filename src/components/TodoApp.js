@@ -74,7 +74,7 @@ export class TodoApp extends Component {
                         Add #{this.state.items.length + 1}
                     </button>
                 </form>
-                <Login />
+               
                 <br/>
                 <br/>
                 <TodoList todoList={this.state.items}/>
